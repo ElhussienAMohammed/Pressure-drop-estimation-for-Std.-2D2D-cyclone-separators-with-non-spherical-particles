@@ -78,6 +78,7 @@ def engineer_features(X, H, R, alpha):
     df["log_R_to_H"] = np.log1p(df["R_to_H"] + eps)
     df["dist_from_x1"] = np.abs(df["x"] - 1.0)
     df["exp_dist"] = np.exp(-df["dist_from_x1"] * 5)
+    df["exp_dist_2"] = np.exp(-df["dist_from_x1"] * 10)
     df["pressure_proxy"] = df["R"] * df["alpha"] / (df["H"] + eps)
     df["log_pressure_proxy"] = np.log1p(df["pressure_proxy"] + eps)
     df["boundary_transition"] = 1 / (1 + np.exp(-20 * (df["x"] - 0.9)))
