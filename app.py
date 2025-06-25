@@ -3,10 +3,24 @@ import numpy as np
 import pandas as pd
 import joblib
 
-# Load trained model
+# Fix: define the class used in the original pickle
+class SimpleEnsemble:
+    def __init__(self, model1, model2, weight1=0.7, weight2=0.3):
+        self.model1 = model1
+        self.model2 = model2
+        self.weight1 = weight1
+        self.weight2 = weight2
+
+    def predict(self, X):
+        pred1 = self.model1.predict(X)
+        pred2 = self.model2.predict(X)
+        return self.weight1 * pred1 + self.weight2 * pred2
+
+# Now load the model
 model = joblib.load("fold4_ensemble_model.pkl")
 transformer = joblib.load("target_transformer.pkl")
 selected_features = joblib.load("selected_features.pkl")
+
 
 # Constants
 AIR_DENSITY = 1.225
