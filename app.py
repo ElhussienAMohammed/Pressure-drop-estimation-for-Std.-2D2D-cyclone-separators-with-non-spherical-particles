@@ -93,5 +93,5 @@ pred_trans = model.predict(input_data)
 pred = transformer.inverse_transform(pred_trans.reshape(-1, 1)).ravel()[0]
 
 # Display Result
-st.markdown("## ✅ Your cyclone pressure drop efficiency:")
+st.markdown("## ✅ Your cyclone pressure drop equals y of the perfect spherical particle  :")
 st.success(f"**y = {pred:.6f}**")
