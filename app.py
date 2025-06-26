@@ -32,10 +32,20 @@ st.title("🔬 Cyclone Pressure Drop Estimator")
 st.markdown("Enter your particle properties to estimate cyclone pressure drop for spherical particles.")
 st.markdown("Calculation with 99.92% accuracy.")
 # Inputs
-phi = st.slider("1️⃣ Particle Shape Factor (Φ)", 0.5, 1.0, 0.85, step=0.01)
-rho_s = st.slider("2️⃣ Particle Density ρₛ (kg/m³)", 700, 3320, 1500)
-d_p = st.slider("3️⃣ Particle Diameter dₚ (µm)", 0.1, 10.0, 1.0)
-alpha_p = st.slider("4️⃣ Volume Fraction αₚ", 1e-5, 1e-3, 1e-4, format="%.6f")
+st.markdown("All calculations where estimated based on cyclone main diameter **Dc = 200 mm** ")
+# --- Inputs ---
+st.markdown("**1️⃣ Φ (sphericity):** Range `0.5 ≤ Φ ≤ 1`")
+phi = st.number_input("Particle Shape Φ", min_value=0.5, max_value=1.0, value=0.5)
+
+st.markdown("**2️⃣ ρₛ (particle density kg/m³):** Range `700 ≤ ρₛ ≤ 3320`")
+rho_s = st.number_input("Particle Density ρₛ", min_value=700.0, max_value=3320.0, value=1500.0)
+
+st.markdown("**3️⃣ dₚ (particle diameter μm):** Range `0.1 ≤ dₚ ≤ 10`")
+d_p = st.number_input("Particle Diameter dₚ", min_value=0.1, max_value=10.0, value=1.0)
+
+st.markdown("**4️⃣ αₚ (volume fraction):** Range `1e-6 ≤ αₚ ≤ 1e-3`")
+alpha_p = st.number_input("Volume Fraction αₚ", min_value=1e-6, max_value=1e-4, format="%.6f", value=1e-5)
+
 
 # Computed variables
 X_input = phi
